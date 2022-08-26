@@ -8,9 +8,9 @@ let ob = new IntersectionObserver(async (entries) => {
   
     if(!entries[0].isIntersecting) return
     ob.unobserve(entries[0].target)
-    ob.observe(document.querySelector('main > *:last-child'))
     createTweet()
-}, {threshold: 0})
+    ob.observe(document.querySelector('main > *:last-child'))
+})
 ob.observe(last)
 
 function createTweet() {
@@ -20,7 +20,7 @@ function createTweet() {
     //lets walk the dom 🐕
     newNode.children[0].children[0].children[0].src = faker.image.avatar() 
     newNode.children[0].children[1].children[0].children[0].innerText = faker.internet.userName()
-    newNode.children[0].children[1].children[0].children[1].innerText = faker.word.adjective()
+    newNode.children[0].children[1].children[0].children[1].innerText = '@' + faker.word.adjective()
     newNode.children[0].children[1].children[0].children[2].innerText = Math.ceil(Math.random(0) * 24) + "h"
 
     //there is a 1/5 chance we will see a user with 1-4 images displayed
